@@ -60,9 +60,7 @@ using the **unstructured library**. The evaluation dataset was created manually.
 | stepback_chain                   | 0.9435                 | 0.7120              | 0.8610            | 0.9254          |
 | HyDE_chain                       | 0.9443                 | 0.7276              | 0.6085            | 0.8859          |
 
-* Evaluations for fine-tuned ColBERT for images retrieval
-
-## Evaluation Metrics for Varying Hyperparameters
+* Hyperparameters optimization for fine-tuned ColBERT for images retrieval 
 
 ### Recall@k for maxsteps during training Variations
 
