@@ -7,7 +7,7 @@
 
 * [Setup](#setup)
 
-- [Run](#run)
+- [Evaluation](#evaluation)
 
 ## Description
 Chat with Introduction to statistical learning in Python textbook. 
@@ -43,3 +43,12 @@ This is an example of asking for table output:
 
 ![Architecture of application](assets/app_architecture.png)
 
+## Evaluation 
+
+| Chain Name                       | Context Precision | Mean Context Recall | Mean Faithfulness | Mean Relevancy |
+|----------------------------------|-------------------|---------------------|-------------------|-----------------|
+| multiquery_chain                 | 0.9252            | 0.7405              | 0.7355            | 0.7791          |
+| decomposition_chain               | 0.9551            | 0.6842              | 0.4788            | 0.6779          |
+| decomposition_individual_chain    | 0.9670            | 0.7164              | 0.7545            | 0.9063          |
+| stepback_chain                   | 0.9435            | 0.7120              | 0.8610            | 0.9254          |
+| HyDE_chain                       | 0.9443            | 0.7276              | 0.6085            | 0.8859          |
