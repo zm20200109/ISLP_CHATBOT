@@ -1,7 +1,6 @@
 # ISLP RAG ChatBot App
 
-##Table of Contents
-
+## Table of Contents
 -[Description](#description)
 -[Architecture](#architecture)
 -[Setup](#setup)
