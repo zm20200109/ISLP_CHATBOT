@@ -4,5 +4,5 @@
 
 ## Architecture
 
-
+![Architecture of application](assets/app_architecture.png)
 
