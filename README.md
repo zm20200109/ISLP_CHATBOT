@@ -18,6 +18,9 @@ The user can select a **method for transforming the original query** from five a
 In the **first input field**, the user can receive responses in the form of **text, tables, Python code, and formulas** from the selected book by pressing the button *"Get Answer using selected Query Translation Method and retriever."*
 By asking a question **in the second input field**, the user query is transformed using the **Multi Query strategy**, and an instance of **MultiVectorRetriever** is employed; however, this time the user can also perform **image searches** besides mentioned operations.
 
+This is an example of asking Chatbot for specific image:
+![Architecture or RNN](assets/image_output.jpeg)
+
 ## Architecture
 
 ![Architecture of application](assets/app_architecture.png)
