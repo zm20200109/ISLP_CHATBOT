@@ -28,7 +28,7 @@ This is an example of asking for partition of Python code.
 ![Asking for Python code](assets/python_code.jpeg)
 
 This is an example of asking for table output:
-
+![Asking for table output](assets/table_output.jpeg)
 
 ## Architecture
 
