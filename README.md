@@ -9,6 +9,8 @@
 
 - [Evaluation](#evaluation)
 
+
+
 ## Description
 Chat with Introduction to statistical learning in Python textbook. 
 
@@ -42,6 +44,10 @@ This is an example of asking for table output:
 ## Architecture
 
 ![Architecture of application](assets/app_architecture.png)
+
+## Setup
+
+![Setup](assets/setup.jpeg)
 
 ## Evaluation 
 
