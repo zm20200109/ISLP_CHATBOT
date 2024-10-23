@@ -1,5 +1,12 @@
 # ISLP RAG ChatBot App
 
+##Table of Contents
+
+-[Description](#description)
+-[Architecture](#architecture)
+-[Setup](#setup)
+-[Run](#run)
+
 ## Description
 Chat with Introduction to statistical learning in Python textbook. 
 
