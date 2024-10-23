@@ -21,6 +21,9 @@ By asking a question **in the second input field**, the user query is transforme
 This is an example of asking Chatbot for specific image:
 ![Architecture or RNN](assets/image_output.jpeg)
 
+This is an example of asking for specific formula:
+![Asking for specific formula](assets/formula_output.jpeg)
+
 ## Architecture
 
 ![Architecture of application](assets/app_architecture.png)
