@@ -47,6 +47,9 @@ This is an example of asking for table output:
 
 ## Setup
 
+The application runs in Google Colab. It is necessary to import the .env file, as shown in the image, into the content/ directory, along with the data_dir/ directory, which contains all the data needed to run the application. 
+Given that the book has many pages, chunks have been created and saved in .pkl variables.
+
 ![Setup](assets/setup.jpeg)
 
 ## Evaluation 
