@@ -1,5 +1,5 @@
 import gradio as gr
-from app import ask_question, get_answer, select_retriever 
+from app import ask_question, get_answer, select_retriever, select_chunking_strategy 
 
 def update_visibility(image):
     return {"visible": image is not None}
@@ -13,6 +13,13 @@ def handle_output(markdown1, image, markdown2):
 
     markdown1_update = gr.update(value=f"**Textual answer:**\n\n\n{markdown1}", visible=True)
     return markdown1_update, image, markdown2_update, gr.update(visible=visible)
+
+def show_options(choice):
+  if choice == "RAG with ISLP.pdf parsed by unstructured.io +  Multivector Retriever ":
+    return gr.update(visible = True)
+  else:
+    return gr.update(visible=False)
+
 
 CSS = """
 .my-button {
@@ -56,7 +63,15 @@ def create_ui():
                   choices=["RAG with ISLP.mmd + vectostore as retreiver", "RAG with ISLP.pdf parsed by unstructured.io +  Multivector Retriever "], 
                   label="Choose an option:"
               )
+              
+              radio2 = gr.Radio(choices=["Chunking strategy 1", "Chunking strategy 2", "Chunking strategy 3", "Chunking strategy 4"], label="Choose chunking strategy.",visible=False)
               radio.change(select_retriever, inputs=radio)
+
+
+              radio2.change(select_chunking_strategy,inputs=radio2)
+
+              radio.change(show_options,radio,radio2)
+
               question_box_for_qt = gr.Textbox(label="Try different Query Translation methods! (Only Textual output expected)", placeholder="Enter your message...")
               submit_btn_for_qt = gr.Button("Get Answer using selected Query Translation Method and retriever", elem_classes="my-button")
               answer_output = gr.Markdown(label="Answer:", visible=False)   # bio je Textbox

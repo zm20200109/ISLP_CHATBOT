@@ -10,7 +10,6 @@ from text_and_tables_retrieval.multiquery_startegies.multiquery_chain import fin
 from text_and_tables_retrieval.multiquery_startegies.HyDE_chain import HyDE_chain
 from text_and_tables_retrieval.multiquery_startegies.step_back_chain import step_back_chain
 from text_and_tables_retrieval.multiquery_startegies.decomposition_with_recursive_answering_chain import query_decomposition_recursive_answering_chain
-
 import matplotlib.pyplot as plt
 import io
 from PIL import Image
@@ -56,11 +55,36 @@ formulas_index = load_formulas_model_and_index()
 # ucitavanje multi vector retrievera za text
 
 
-chunks_path = "./data_dir/chunked_elements_1.pkl" #"/content/drive/MyDrive/project_work/code/results/chunked_elements_1.pkl"#"results/chunked_elements_1.pkl" # chunk_by_title strategy, combine_text_under_n_chars=1000,max_characters=1600, multipage_sections=True, new_after_n_chars=1200, overlap=True,
-txt_summaries_path = "./data_dir/1_txt_summaries.pkl"#"/content/drive/MyDrive/project_work/code/results/1_txt_summaries.pkl"#"results/1_txt_summaries.pkl"
-tbl_summaries_path = "data_dir/1_table_summaries.pkl" #"results/1_table_summaries.pkl"
+# chunks_path = "./data_dir/chunked_elements_1.pkl" #"/content/drive/MyDrive/project_work/code/results/chunked_elements_1.pkl"#"results/chunked_elements_1.pkl" # chunk_by_title strategy, combine_text_under_n_chars=1000,max_characters=1600, multipage_sections=True, new_after_n_chars=1200, overlap=True,
+# txt_summaries_path = "./data_dir/1_txt_summaries.pkl"#"/content/drive/MyDrive/project_work/code/results/1_txt_summaries.pkl"#"results/1_txt_summaries.pkl"
+# tbl_summaries_path = "data_dir/1_table_summaries.pkl" #"results/1_table_summaries.pkl"
 
-retriever = create_retriever(chunks_path,txt_summaries_path,tbl_summaries_path,"similarity",5)
+
+# defaultno, putanje do textova i tabela odgovaraju strategiji 1 koja je najbolja, na kojoj je izgradjen vectorstore as retriever na mmd fajlu.
+# ako je korisnik izabrao nesto drugo, ove promenljive promenice svoj sadrzaj.
+text_summaries_path = "./data_dir/chunking_strategy_1/1_txt_summaries.pkl"
+table_summaries_path = "./data_dir/chunking_strategy_1/1_table_summaries.pkl"
+chunk_path = "./data_dir/chunked_elements_1.pkl"
+
+def select_chunking_strategy(choice):
+  
+  global text_summaries_path, table_summaries_path 
+
+  if choice == "Chunking strategy 1":
+    return  # defaultna podesavanja 
+  elif choice == "Chunking strategy 2":
+    text_summaries_path = "./data_dir/chunking_strategy_2/2_txt_summaries.pkl"
+    table_summaries_path = "./data_dir/chunking_strategy_2/2_table_summaries.pkl"
+  elif choice == "Chunking strategy 3":
+    text_summaries_path = "./data_dir/chunking_strategy_3/3_txt_summaries.pkl"
+    table_summaries_path = "./data_dir/chunking_strategy_3/3_table_summaries.pkl"
+  elif choice == "Chunking strategy 4":
+    text_summaries_path = "./data_dir/chunking_strategy_4/4_txt_summaries.pkl"
+    table_summaries_path = "./data_dir/chunking_strategy_4/4_table_summaries.pkl"
+  else:
+    return 
+
+retriever = create_retriever(chunk_path,text_summaries_path,table_summaries_path,"similarity",5) # tbl_summaries_path
 
 retriever_from_vectorstore_for_mmd = split_mmd_by_headers(None, chunk_size=1500, chunk_overlap=30)
 
@@ -400,16 +424,3 @@ def ask_question(question):
 if __name__ == "__main__":
   print("Sve je dobro importovano!")
   
-
-
-
-
-
-
-
-
-
-
-
-
-
