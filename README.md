@@ -53,6 +53,9 @@ Given that the book has many pages, chunks have been created and saved in .pkl v
 
 ![Setup](assets/setup.jpeg)
 
+data_dir/ content:
+![Data dir](assets/data_dir.jpg)
+
 ## Evaluation 
 
 * Evaluation of Query translation methods
