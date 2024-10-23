@@ -2,8 +2,11 @@
 
 ## Table of Contents
 -[Description](#description)
+
 -[Architecture](#architecture)
+
 -[Setup](#setup)
+
 -[Run](#run)
 
 ## Description
