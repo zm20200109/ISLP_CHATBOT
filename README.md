@@ -24,6 +24,9 @@ This is an example of asking Chatbot for specific image:
 This is an example of asking for specific formula:
 ![Asking for specific formula](assets/formula_output.jpeg)
 
+This is an example of asking for partition of Python code.
+
+
 ## Architecture
 
 ![Architecture of application](assets/app_architecture.png)
