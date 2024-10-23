@@ -49,6 +49,7 @@ This is an example of asking for table output:
 
 The application runs in Google Colab. It is necessary to import the .env file, as shown in the image, into the content/ directory, along with the data_dir/ directory, which contains all the data needed to run the application. 
 Given that the book has many pages, chunks have been created and saved in .pkl variables.
+.env file contains OPENAI_API_KEY, GOOGLE_CLOUD_KEY_FILE (all images are stored in the cloud bucket), LANGCHAIN_API_KEY, LANGCHAIN_TRACING_V2, LANGCHAIN_ENDPOINT, LANGCHAIN_PROJECT variables
 
 ![Setup](assets/setup.jpeg)
 
