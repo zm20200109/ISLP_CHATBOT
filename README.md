@@ -27,6 +27,9 @@ This is an example of asking for specific formula:
 This is an example of asking for partition of Python code.
 ![Asking for Python code](assets/python_code.jpeg)
 
+This is an example of asking for table output:
+
+
 ## Architecture
 
 ![Architecture of application](assets/app_architecture.png)
