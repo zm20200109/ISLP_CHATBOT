@@ -10,7 +10,6 @@ from text_and_tables_retrieval.multiquery_startegies.multiquery_chain import fin
 from text_and_tables_retrieval.multiquery_startegies.HyDE_chain import HyDE_chain
 from text_and_tables_retrieval.multiquery_startegies.step_back_chain import step_back_chain
 from text_and_tables_retrieval.multiquery_startegies.decomposition_with_recursive_answering_chain import query_decomposition_recursive_answering_chain
-
 import matplotlib.pyplot as plt
 import io
 from PIL import Image
@@ -25,7 +24,6 @@ from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from pprint import pprint 
-from flask import Flask, request, jsonify, send_file, render_template
 from io import BytesIO
 from google.oauth2 import service_account
 from google.cloud import storage
@@ -159,22 +157,15 @@ machine learning, statistical and matematical concepts provided in the context.
 formula_text_prompt = ChatPromptTemplate.from_template(formula_text)
 
 
-image_text = """Here is the question you need to answer:
 
-\n --- \n {question} \n --- \n
-
-Here is the context relevant to the question and it represents result of the retrieval.
-\n --- \n {context} \n --- \n
-
-Here is figure description of the image:
-\n --- \n {description} \n --- \n
-
-Use context and description of the image to describe the best that you can what is represented on the image. You need to aggregate knowledge from context and
-description in order to describe image.
+image_text_2 = """
+Your task is to generate the best description of figure from the book based on the following question:
+\n --- \n{question} \n --- \n
+You are provided with the retrieved context: 
+\n --- \n{context} \n --- \n
 """
 
-image_text_prompt = ChatPromptTemplate.from_template(image_text)
-
+image_text_prompt_2 = ChatPromptTemplate.from_template(image_text_2) 
 
 result_example = r"\text{{MSE}} = \frac{{1}}{{n}} \sum_{{i=1}}^{{n}} (y_i - \hat{{y}}_i)^2"
 
@@ -301,17 +292,18 @@ def search_for_image_context(state:State):
   desc = state["images"][0]["content"]
   metadata = state["images"][0]["document_metadata"]["metadata"] 
 
-  image_context = retriever.invoke(desc)
+  image_context = retriever_from_vectorstore_for_mmd.invoke(question) # desc
   chain = (
-      image_text_prompt
+      image_text_prompt_2 #image_text_prompt
       | llm
       | StrOutputParser()
   )
   answer = chain.invoke({
       "context":image_context[0],
       "question":question,
-      "description": desc,
+      #"description": desc,
   })
+  # ovde mi fali neka provera da li opis ima veze sa pitanjem ako ima onda ga vrati, ako nema onda kazi idk
   CURRENT_TEXT = answer
   return {"answer":answer, "image":get_image(metadata)}
 
