@@ -215,9 +215,12 @@ def images_retriever(state: State):
   return {"question":question, "images":[images[0]]}
 
 def text_retriever(state: State):
+  global CURRENT_TEXT 
   question = state["question"]
   documents = retriever.invoke(question)
-  return {"question":question, "texts":[documents[0]]}
+  answer = final_chain_mq(retriever).invoke({"question":question})
+  CURRENT_TEXT = answer 
+  return {"question":question, "texts":[documents[0]], "answer":answer}
 
 def decide_next_intent(state:State):
   if state["intent"] == "formula":
@@ -392,16 +395,3 @@ def ask_question(question):
 if __name__ == "__main__":
   print("Sve je dobro importovano!")
   
-
-
-
-
-
-
-
-
-
-
-
-
-
