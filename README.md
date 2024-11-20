@@ -1,5 +1,5 @@
 # ISLP RAG ChatBot App
-For detail documentation of application, visit: [PDF doc](assets/ZavrsniFinal_20_11.pdf)
+For detail documentation of application, visit: [Explanation of why specific methods are being used in the final application architecture](assets/ZavrsniFinal_20_11.pdf)
 
 
 ## Table of Contents
